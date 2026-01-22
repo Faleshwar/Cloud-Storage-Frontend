@@ -52,6 +52,8 @@ export const AuthProvider = ({children})=>{
         if(storedToken){
             setAuthToken(storedToken);
             setLoading(false);
+        }else{
+            navigate("/login")
         }
     }, []);
 
