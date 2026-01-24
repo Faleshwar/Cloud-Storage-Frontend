@@ -12,9 +12,11 @@ export const ShareProvider = ({children})=>{
         return await shareApi.sharedWithMeFiles();
     }
 
-   
+   const revokeShare = async(fileId)=>{
+    return await shareApi.revokeShare(fileId);
+   }
 
-    return <ShareContext.Provider value={{shareFile, sharedWithMeFiles}}>{children}</ShareContext.Provider>
+    return <ShareContext.Provider value={{shareFile, sharedWithMeFiles, revokeShare}}>{children}</ShareContext.Provider>
 }
 
 export const useShareContext = ()=>useContext(ShareContext);

@@ -97,6 +97,7 @@ export const FolderProvider = ({children})=>{
             const res = await fileApi.myTrashed();
             setFiles(res.data.files);
             setFolders(res.data.folders);
+            //console.log(res.data);
         }catch(err){
             console.error(err);
         }finally{
@@ -117,12 +118,7 @@ export const FolderProvider = ({children})=>{
     }
 
     const moveFolder = async (folderId, targetFolderId)=>{
-        try{
-            const res = await folderApi.moveFolder(folderId, targetFolderId);
-            console.log(res);
-        }catch(err){
-            console.error(err);
-        }
+       return await folderApi.moveFolder(folderId, targetFolderId);
     }
 
     const deleteFolder = async (folderId)=>{

@@ -6,13 +6,7 @@ import { useUIContext } from '../../context/UIContext';
 const MoveModal = (data) => {
 
     const [targetFolderId, setTargetFolderId] = useState(null);
-    const {moveFolder} = useFolderContext();
     const {closeModal} = useUIContext();
-
-    const handleMove = async ()=>{
-        moveFolder(data.id, targetFolderId);
-        closeModal();
-    }
 
     
     

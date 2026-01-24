@@ -7,5 +7,7 @@ export const shareApi = {
 
     sharedFileRevoke: (fileId, userId)=> http.delete(`/v1/files/share/${fileId}/revoke?userId=${userId}`),
 
-    shareLink: (fileId, data)=> http.post(`/v1/files/share/${fileId}/link`, data)
+    shareLink: (fileId, data)=> http.post(`/v1/files/share/${fileId}/link`, data),
+
+    shareRevoke: (fileId)=> http.delete(`/v1/files/share/${fileId}/revoke`)
 }

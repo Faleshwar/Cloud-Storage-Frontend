@@ -17,7 +17,7 @@ export const FileProvider = ({ children }) => {
                     const percentageCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                     setProgress(percentageCompleted);}
 
-            const res = await fileApi.uploadFileInRoot(formData, onUploadProgress);
+            const res = await fileApi.uploadFileInRoot(formData, {onUploadProgress});
         } catch (err) {
             console.log(err);
         } finally {

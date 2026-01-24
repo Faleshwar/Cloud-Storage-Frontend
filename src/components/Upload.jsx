@@ -37,7 +37,7 @@ const Upload = () => {
         {/* Progress Bar Container */}
       {loading && (
         <div className="mt-4">
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-1/2 bg-gray-200 rounded-full h-2">
             <div
               className="bg-blue-600 h-2 rounded-full transition-all duration-200"
               style={{ width: `${progress}%` }}

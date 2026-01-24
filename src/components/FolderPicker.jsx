@@ -7,10 +7,11 @@ import { useFileContext } from '../context/FileContext';
 
 const FolderPicker = (data) => {
 
-  const [folders, setFolders] = useState([]);
-  const { showToast } = useUIContext();
+  const [folderss, setFolderss] = useState([]);
+  const { showToast , closeModal} = useUIContext();
   const {moveFolder} = useFolderContext();
   const {move} = useFileContext();
+  const {folders, setFolders, files, setFiles} = useFolderContext();
 
   const [selectedId, setSelectedId] = useState("root");
 
@@ -20,7 +21,7 @@ const FolderPicker = (data) => {
     if (!selectedId) return;
     try {
       const res = selectedId === "root" ? await folderApi.getRootFolders() : await folderApi.getFolders(selectedId);
-      selectedId === "root" ? setFolders(res.data.data.folders) : setFolders(res.data.data);
+      selectedId === "root" ? setFolderss(res.data.data.folders) : setFolderss(res.data.data);
       console.log(res.data);
     } catch (err) {
       console.log(err);
@@ -33,17 +34,23 @@ const FolderPicker = (data) => {
       try {
         const res = await moveFolder(data.data.item.id, parentFolderId);
         showToast("success", "Moving folder success");
+        setFolders(folders.filter(f=>f.id!==data.data.item.id));
         console.log(res.data);
       } catch (err) {
         showToast("error", "Moving folder error")
+      }finally{
+        closeModal();
       }
     } else {
       try {
         const res = await move(data.data.item.id, parentFolderId);
         showToast("success", "Moving file success");
+         setFiles(files.filter(f=>f.id!==data.data.item.id));
         console.log(res.data);
       } catch (err) {
         showToast("error", "Moving file error")
+      }finally{
+        closeModal();
       }
 
     }
@@ -60,7 +67,7 @@ const FolderPicker = (data) => {
   return (
     <div className='h-50 overflow-auto'>
       <div onClick={() => onSelect(null)}>Root</div>
-      {folders && folders.map((f) => (
+      {folderss && folderss.map((f) => (
         <div key={f.id} className={`flex items-center gap-3 px-4 py-2 bg-white rounded-md hover:bg-gray-100 cursor-pointer`}
         >
           <img src={folderIcon} alt="folder" className='w-8 h-8' />

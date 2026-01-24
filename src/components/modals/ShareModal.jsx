@@ -19,7 +19,7 @@ const ShareModal = ({data, onClose}) => {
   const handleShare = async (e)=>{
     e.preventDefault();
     try{
-      const res = await shareFile(data.id, sharedWith);
+      const res = await shareFile(data.item.id, sharedWith);
       showToast("success", res.data.message);
       console.log(res.data);
     }catch(err){

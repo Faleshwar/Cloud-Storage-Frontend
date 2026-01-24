@@ -17,7 +17,6 @@ const Register = () => {
     try {
       await auth.register(credentials)
       setCredentials({ email: "", name: "", password: "" });
-      showToast("success", "Registration success");
       setTimeout(()=>{
         navigate("/");
       }, 1500)

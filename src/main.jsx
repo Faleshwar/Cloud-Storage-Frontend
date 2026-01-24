@@ -15,20 +15,20 @@ import { FileProvider } from './context/FileContext.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+      <Toaster position='top-center'/>
+    <UIProvider>
     <AuthProvider>
       <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
         <FolderProvider>
           <FileProvider>
       <ShareProvider>
-      <UIProvider>
-        <Toaster position='top-center'/>
         <App />
-        </UIProvider>
         </ShareProvider>
         </FileProvider>
         </FolderProvider>
     </GoogleOAuthProvider>
     </AuthProvider>
+    </UIProvider>
     </BrowserRouter>
   </StrictMode>,
 )

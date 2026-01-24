@@ -24,7 +24,6 @@ const Login = () => {
          e.preventDefault();
         const credentials = {email, password};
         await auth.login(credentials);
-         showToast("success","Login successful")
         navigate("/")
        }catch(err){
         showToast("error","Login failed please provide valid email and password")

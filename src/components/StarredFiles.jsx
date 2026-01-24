@@ -6,7 +6,6 @@ import { useUIContext } from '../context/UIContext';
 
 const StarredFiles = () => {
     const {files, setFiles, starredFiles, unmarkStar, loading} = useFolderContext();
-    const [selectedIds, setSelectedIds] = useState();
     const {showToast} = useUIContext();
 
     const handleUnmarkStar = async (e, fileId)=>{

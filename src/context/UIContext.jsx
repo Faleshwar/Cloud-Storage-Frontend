@@ -13,6 +13,7 @@ export const UIProvider = ({children})=>{
     const [modal, setModal] = useState({isOpen: false, type: null, target: null});
     
     const showToast = (type, message)=>{
+        console.log("Toast called")
         type==="error"?toast.error(message):toast.success(message);
     }
 
